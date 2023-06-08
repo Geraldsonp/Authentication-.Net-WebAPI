@@ -4,8 +4,8 @@ WORKDIR /app
 COPY *.sln ./
 
 # Copy the project files
-COPY AuthenticationApi/AuthenticationApi.csproj ./AuthenticationApi/
-COPY Application/Application.csproj ./Application/
+COPY Server/AuthenticationApi/AuthenticationApi.csproj ./Server/AuthenticationApi/
+COPY Server/Application/Application.csproj ./Server/Application/
 
 # Restore the dependencies
 RUN dotnet restore
