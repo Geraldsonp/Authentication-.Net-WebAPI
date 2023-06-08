@@ -28,7 +28,7 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 # Expose the port
-EXPOSE 80
+EXPOSE 80 
 
 # Set the environment variables if needed
 # ENV ASPNETCORE_ENVIRONMENT=Production
