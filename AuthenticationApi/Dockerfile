@@ -10,7 +10,7 @@ COPY ../Application/Application.csproj ../Application/
 RUN dotnet restore
 
 # Copy the remaining source code
-COPY AuthenticationApi/ .
+COPY / .
 
 # Build the application
 RUN dotnet build -c Release --no-restore
