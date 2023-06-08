@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the project files
-COPY AuthenticationApi/AuthenticationApi.csproj .
+COPY AuthenticationApi.csproj .
 COPY ../Application/Application.csproj ../Application/
 
 # Restore the dependencies
