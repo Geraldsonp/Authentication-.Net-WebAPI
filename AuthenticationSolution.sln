@@ -2,9 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{830FC7F3-FA78-4BB3-90F0-8A873508AA44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationApi", "AuthenticationApi\AuthenticationApi.csproj", "{3362D540-B6B9-4AFB-AE5C-92C9B808A6A9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationApi", "Server\AuthenticationApi\AuthenticationApi.csproj", "{3362D540-B6B9-4AFB-AE5C-92C9B808A6A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{E4231B72-8DF3-4116-9A6B-EA6CFDBDFFC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Server\Application\Application.csproj", "{E4231B72-8DF3-4116-9A6B-EA6CFDBDFFC1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D5CF6FEA-74C2-4AAB-814F-DE605572820A}"
 EndProject
