@@ -51,7 +51,6 @@ app.UseCors(builder => {
     builder.AllowAnyOrigin();
     builder.AllowAnyMethod();
 });
-
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
