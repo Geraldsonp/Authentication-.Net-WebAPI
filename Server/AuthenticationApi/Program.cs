@@ -45,6 +45,13 @@ builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+
+app.UseCors(builder => {
+    builder.AllowAnyHeader();
+    builder.AllowAnyOrigin();
+    builder.AllowAnyMethod();
+});
+
 // Configure the HTTP request pipeline.
 
 app.UseSwagger();
