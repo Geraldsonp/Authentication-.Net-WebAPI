@@ -16,7 +16,7 @@ public class UserEditHandler : IUserEditHandler
         _userManager = userManager;
     }
     
-    public async Task<IdentityResult> EditUserAsync(string userId, UserEditDto userDto)
+    public async Task<UserProfileDto> EditUserAsync(string userId, UserEditDto userDto)
     {
         var user = await _userManager.FindByIdAsync(userId);
 
@@ -29,6 +29,10 @@ public class UserEditHandler : IUserEditHandler
 
         var result = await _userManager.UpdateAsync(user);
 
-        return result;
+        if (!result.Succeeded){
+            throw new BadRequestException(result.Errors.Select(x => $"{x.Code} {x.Description}"));
+        }
+
+        return user.Adapt<UserProfileDto>();
     }
 }

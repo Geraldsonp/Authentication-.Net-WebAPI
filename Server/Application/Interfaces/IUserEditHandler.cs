@@ -5,5 +5,5 @@ namespace Application.Interfaces;
 
 public interface IUserEditHandler
 {
-    public Task<IdentityResult> EditUserAsync(string userId, UserEditDto userDto);
+    public Task<UserProfileDto> EditUserAsync(string userId, UserEditDto userDto);
 }

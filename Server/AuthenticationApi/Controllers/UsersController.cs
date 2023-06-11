@@ -38,14 +38,8 @@ public class UsersController : ControllerBase
     [HttpPut("profile/{userId}")]
     public async Task<IActionResult> UpdateUser(string userId, [FromBody] UserEditDto userDto)
     {
-       
         var result = await _userEditHandler.EditUserAsync(userId, userDto);
 
-        if (result.Succeeded)
-        {
-            return Ok();
-        }
-
-        return BadRequest(result.Errors);
+        return Ok(result);
     }
 }

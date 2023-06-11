@@ -3,6 +3,7 @@ using Application.Domain;
 using Application.DTOS;
 using Application.Exceptions;
 using Application.Handlers;
+using FluentAssertions;
 using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Moq;
@@ -34,7 +35,9 @@ public class UserEditHandlerTests
 
         // Assert
         Assert.NotNull(result);
-        Assert.True(result.Succeeded);
+        result.Name.Should().Be(userDto.Name);
+        result.Id.Should().Be(userId);
+        result.Bio.Should().Be(userDto.Bio);
         userManagerMock.Verify(u => u.FindByIdAsync(userId), Times.Once);
         userManagerMock.Verify(u => u.UpdateAsync(user), Times.Once);
     }
