@@ -1,6 +1,8 @@
 ﻿using Application.Domain;
+using Application.DTOS;
 using Application.Exceptions;
 using Application.Interfaces;
+using Mapster;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application.Services;
@@ -16,7 +18,7 @@ public class AuthenticationService : IAuthenticationService
         _tokenService = tokenService;
     }
 
-    public async Task<string> LoginAsync(string email, string password)
+    public async Task<TokenResponseDto> LoginAsync(string email, string password)
     {
         var user = await _userManager.FindByEmailAsync(email);
         if (user == null || !await _userManager.CheckPasswordAsync(user, password))
@@ -26,6 +28,9 @@ public class AuthenticationService : IAuthenticationService
 
         var token = _tokenService.GenerateToken(user);
         
-        return token;
+        return new TokenResponseDto{
+            Token = token,
+            Profile = user.Adapt<UserProfileDto>()
+        };
     }
 }

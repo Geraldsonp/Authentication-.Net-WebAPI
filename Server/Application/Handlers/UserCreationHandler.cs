@@ -16,7 +16,7 @@ public class UserCreationHandler : IUserCreationHandler
         _userManager = userManager;
         _tokenService = tokenService;
     }
-    public async Task<string> CreateUserAsync(UserPostDto userDto)
+    public async Task<TokenResponseDto> CreateUserAsync(UserPostDto userDto)
     {
         var user = userDto.Adapt<User>();
         user.UserName = userDto.Name;
@@ -25,13 +25,19 @@ public class UserCreationHandler : IUserCreationHandler
 
         if (result.Succeeded)
         {
-            return _tokenService.GenerateToken(user);
+            return new TokenResponseDto{
+                Token = _tokenService.GenerateToken(user),
+                Profile = user.Adapt<UserProfileDto>()
+            };
         }
         else
         {
             //Todo:Trow ERROR Later
         }
         
-        return "Error";
+        return new TokenResponseDto{
+            Token = "Error",
+            Profile = null
+        };
     }
 }

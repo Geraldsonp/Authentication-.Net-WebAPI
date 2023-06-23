@@ -1,6 +1,8 @@
-﻿namespace Application.Interfaces;
+﻿using Application.DTOS;
+
+namespace Application.Interfaces;
 
 public interface IAuthenticationService
 {
-    Task<string> LoginAsync(string username, string password);
+    Task<TokenResponseDto> LoginAsync(string username, string password);
 }

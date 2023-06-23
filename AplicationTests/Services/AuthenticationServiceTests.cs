@@ -16,7 +16,8 @@ public class AuthenticationServiceTests
         // Arrange
         var username = "testuser";
         var password = "password123";
-        var user = new User { UserName = username };
+        var name = "Gerald";
+        var user = new User { UserName = username, Name = name };
 
         var userManagerMock = new Mock<UserManager<User>>(Mock.Of<IUserStore<User>>(), null, null, null, null, null, null, null, null);
         userManagerMock.Setup(m => m.FindByEmailAsync(username)).ReturnsAsync(user);
@@ -31,7 +32,8 @@ public class AuthenticationServiceTests
         var result = await authenticationService.LoginAsync(username, password);
 
         // Assert
-        result.Should().Be("generated-token");
+        result.Token.Should().Be("generated-token");
+        result.Profile.Name.Should().Be(name);
     }
 
     [Fact]

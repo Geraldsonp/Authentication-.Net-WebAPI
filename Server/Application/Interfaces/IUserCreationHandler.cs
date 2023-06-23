@@ -5,5 +5,5 @@ namespace Application.Interfaces;
 
 public interface IUserCreationHandler
 {
-    Task<string> CreateUserAsync(UserPostDto userDto);
+    Task<TokenResponseDto> CreateUserAsync(UserPostDto userDto);
 }

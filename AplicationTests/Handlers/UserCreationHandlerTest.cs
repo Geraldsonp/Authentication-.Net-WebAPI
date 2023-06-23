@@ -46,7 +46,9 @@ public class UserCreationHandlerTest
 
         // Assert
 
-        result.Should().Be(token);
+        result.Token.Should().Be(token);
+        result.Profile.Name.Should().Be(userDto.Name);
+        result.Profile.Email.Should().Be(userDto.Email);
         _userManagerMock.Verify(u => u.CreateAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Once);
     }
     
@@ -75,7 +77,7 @@ public class UserCreationHandlerTest
         var result = await handler.CreateUserAsync(userDto);
 
         // Assert
-        result.Should().Be("Error");
+        result.Token.Should().Be("Error");
         _userManagerMock.Verify(u => u.CreateAsync(It.IsAny<User>(), It.IsAny<string>()), Times.Once);
     }
 

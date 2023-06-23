@@ -19,7 +19,7 @@ public class AuthenticationController : Controller
     }
     
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDto loginDto)
+    public async Task<ActionResult<TokenResponseDto>> Login(LoginDto loginDto)
     {
         var result = await _authenticationService.LoginAsync(loginDto.Email, loginDto.Password);
         
@@ -28,7 +28,7 @@ public class AuthenticationController : Controller
 
     [HttpPost("register")]
     [ProducesResponseType(typeof(string),StatusCodes.Status200OK)]
-    public async Task<IActionResult> Post([FromBody] UserPostDto userDto)
+    public async Task<ActionResult<TokenResponseDto>> Post([FromBody] UserPostDto userDto)
     {
         var result = await _userCreationHandler.CreateUserAsync(userDto);
         return Ok(result);
